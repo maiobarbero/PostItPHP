@@ -23,7 +23,7 @@ completed TINYINT(1) NOT NULL DEFAULT 0
 if ($dbh->query($sql) === TRUE) {
   echo "Table MyGuests created successfully";
 } else {
-  echo "Error creating table: " . $conn->error;
+  echo "Error creating table: " . $dbh->error;
 }
 
 
