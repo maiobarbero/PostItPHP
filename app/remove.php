@@ -11,9 +11,10 @@ if(isset($_POST['id'])){
   if (empty($id)){
       echo 0;
   }else{
-      $stmt = $dbh ->prepare("DELETE FROM todos WHERE id = ?");
-  
-      $res = $stmt->execute([$id]);
+      $sql = "DELETE FROM todos WHERE id = ?";
+      $stmt = $dbh ->prepare($sql);
+      $stmt -> bindParam(1,$id,PDO::PARAM_INT);
+      $res = $stmt->execute();
     
 
 
