@@ -11,8 +11,12 @@ if(isset($_POST['id'])){
   if (empty($id)){
       echo 'error';
   }else{
-      $todos = $dbh->prepare("SELECT id, completed FROM todos WHERE id=?");
-      $todos->execute([$id]);
+      $sql = "SELECT id, completed FROM todos WHERE id=?";
+      $todos = $dbh->prepare($sql);
+      $todos -> bindParam(1,$id,PDO::PARAM_INT);
+      
+      
+      $todos->execute();
       $todo = $todos->fetch();
       $uId = $todo['id'];
       $checked = $todo['completed'];
