@@ -4,32 +4,29 @@
 if(isset($_POST['title'])){
     require_once '../connection.php';
 
-    $title = $_POST['title'];
-    $priority = $_POST['priority'];
-    $type = $_POST['type'];
-    
+$title = $_POST['title'];
+$priority = $_POST['priority'];
+$type = $_POST['type'];
 
-  if (empty($title)){
-      header("Location: ../index.php?mess=error");
-  }else{
-      $stmt = $dbh ->prepare("INSERT INTO todos (title, priority, type) VALUES ('$title','$priority','$type')");
-  
-      $res = $stmt->execute([$title,$priority,$type]);
-    
+$sql = "INSERT INTO todos (title, priority, `type`) VALUES (?,?,?)";
 
+$stmt = $dbh->prepare($sql);
+$stmt->bindParam(1, $title, PDO::PARAM_STR);
+$stmt->bindParam(2, $priority, PDO::PARAM_STR);
+$stmt->bindParam(3, $type, PDO::PARAM_STR);
 
-      if($res){
-          header("Location: ../index.php?mess=success");
-      }else{
-          header("Location: ../index.php");
-      }
-      $dbh = null;
-      exit();
-  }
+$res = $stmt->execute();
+
+if($res){
+ header("Location: ../index.php?mess=success");
+}else{
+    header("Location: ../index.php");
+}
+     
+
+$dbh = null;
+exit();
 }else{
       header("Location: ../index.php?mess=error");
 }
-
-
-
-?>
+ ?>

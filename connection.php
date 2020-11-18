@@ -1,12 +1,10 @@
 <?php 
-   
-/* Connect to a MySQL database using driver invocation */
-$dsn = 'mysql:dbname=URDBNAME;host=YOURHOST';
-$user = 'USER';
-$password = 'PASSWORD';
+require "vendor/autoload.php";
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 try {
-    $dbh = new PDO($dsn, $user, $password);
+    $dbh = new PDO("mysql:dbname=".$_ENV['DBNAME'].";host=".$_ENV['HOST'], $_ENV['USER'], $_ENV['PASSWORD']);
 } catch (PDOException $e) {
     echo 'Connection failed: ' . $e->getMessage();
 }
