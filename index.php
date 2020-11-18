@@ -27,7 +27,7 @@ require_once 'connection.php'
                     <!-- no text in input -->
 
                     <?php if(isset($_GET['mess']) && $_GET['mess'] == 'error') {?>
-                        <input type="text"
+                    <input type="text"
                     name="title"
                     placeholder="Field Required!!!"
                     class="error">
@@ -127,51 +127,6 @@ require_once 'connection.php'
     </main>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-
-       $(document).ready(function(){
-
-           $('.fa-trash-alt').click(function(){
-               const id = $(this).attr('id');
-
-               $.post("app/remove.php",
-               {
-                   id:id
-               },
-               (data)=>{
-                   if(data){
-                       $(this).parents('.todo').hide('drop', "slow" , function(){
-                           location.reload()
-                       });
-                       
-                   }
-           })
-           
-       });
-
-       $('.fa-calendar-check').click(function(){
-           
-           const id = $(this).attr('data-todo-id');
-           $.post('app/check.php',
-           {
-               id:id
-           },
-           (data) => {
-               if(data != 'error'){
-                    const h2 = $(this).next();
-                    if(data==='1'){
-                        h2.removeClass('completed')
-                        location.reload()
-                    }else{
-                        h2.addClass('completed')
-                        location.reload()
-                    }
-               }
-            
-            });
-           });
-    });
-
-</script>
+    <script src="app.js"></script>
 </body>
 </html>
