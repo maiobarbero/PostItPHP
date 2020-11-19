@@ -1,3 +1,3 @@
 # PostItPHP
 
-# Edit /config.database.php to connect with your db
+# Edit api/config.database.php to connect with your db
