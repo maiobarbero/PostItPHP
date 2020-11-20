@@ -8,7 +8,7 @@ $("#form").on("submit", function () {
 
   // submit form data to api
   $.ajax({
-    url: "http://localhost/PostIt_To-Do-List/PostItPHP/api/todo/create.php",
+    url: "http://localhost/PostItPHP/api/todo/create.php",
     type: "POST",
     contentType: "application/json",
     data: form_data,
