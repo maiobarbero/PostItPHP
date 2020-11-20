@@ -6,7 +6,7 @@ $(document).delegate(".check", "click", function (event) {
     });
 
     $.ajax({
-      url: "http://localhost/PostIt_To-Do-List/PostItPHP/api/todo/update.php",
+      url: "http://localhost/PostItPHP/api/todo/update.php",
       type: "POST",
       dataType: "json",
       contentType: "application/json; charset=utf-8",
@@ -25,7 +25,7 @@ $(document).delegate(".check", "click", function (event) {
     });
 
     $.ajax({
-      url: "http://localhost/PostIt_To-Do-List/PostItPHP/api/todo/update.php",
+      url: "http://localhost/PostItPHP/api/todo/update.php",
       type: "POST",
       dataType: "json",
       contentType: "application/json; charset=utf-8",
