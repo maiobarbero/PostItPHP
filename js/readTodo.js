@@ -7,7 +7,7 @@ var allTodo = document.querySelector(".all_todo");
 //read function
 async function readTodos() {
   const response = await fetch(
-    "http://localhost/PostIt_To-Do-List/PostItPHP/api/todo/read.php"
+    "http://localhost/PostItPHP/api/todo/read.php"
   );
   const data = await response.json();
   const todos = data.todos;
